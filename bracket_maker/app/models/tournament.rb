@@ -25,10 +25,5 @@ class Tournament < ApplicationRecord
   # def teams
   # end
 
-  
-
-
-
-
 end
 
