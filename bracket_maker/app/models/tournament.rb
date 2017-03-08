@@ -18,12 +18,14 @@ class Tournament < ApplicationRecord
   #   if completed
   #     #something
   #   else
-  #     "This tournament is still in session."
+      # "Winner is not yet determined."
   #   end
   # end
 
   # def teams
   # end
+
+  
 
 
 
