@@ -1,2 +1,0 @@
-class Gameteam < ApplicationRecord
-end
