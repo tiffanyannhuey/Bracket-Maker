@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   let(:user) { User.new }
 
   describe "a method here " do
     it ""
   end
 end
+
+
