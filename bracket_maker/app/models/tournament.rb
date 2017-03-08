@@ -5,10 +5,28 @@ class Tournament < ApplicationRecord
   belongs_to :admin, class_name: "User"
 
   validates :name, :event, :admin_id, presence: true
+
+  validates :completed, inclusion: { in: [true, false] }
   
-  validates_associated :rounds
+  validates_associated :rounds, :games, :teams
+
+  validates :admin, absence: true
 
   scope :recent, -> { order("created_at DESC").limit(6) }
+
+  # def winner
+  #   if completed
+  #     #something
+  #   else
+  #     "This tournament is still in session."
+  #   end
+  # end
+
+  # def teams
+  # end
+
+
+
 
 end
 
