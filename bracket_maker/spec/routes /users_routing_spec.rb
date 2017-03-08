@@ -14,8 +14,4 @@ RSpec.describe "Routing to users", :type => :routing do
     expect(:get => "/users/1").to route_to("users#show", :id => "1")
   end
 
-  it "routes DELETE /logout to users#destroy" do
-    expect(:delete => "/logout").to route_to("users#destroy")
-    # need to come back to this one
-  end
 end
