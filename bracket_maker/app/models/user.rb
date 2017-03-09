@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :tournaments, foreign_key: admin_id
+  has_many :tournaments
 
   validates :username, :email, presence: true
 

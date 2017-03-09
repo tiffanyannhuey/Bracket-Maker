@@ -14,7 +14,7 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  xdescribe "POST #create" do
+  describe "POST #create" do
     context "when valid params are passed" do
       subject(:valid_user) {post :create, user: {username: "Todd", email: "123@abc.com", password: "password"}}
       it "responds with status code 302" do
