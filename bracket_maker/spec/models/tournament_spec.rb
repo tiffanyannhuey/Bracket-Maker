@@ -25,7 +25,11 @@ RSpec.describe Tournament, :type => :model do
   end
 
   context "validations" do
-    it { should validate_presence_of(:name) }
+    presence_variables = [:name, :event, :admin_id]
+
+    presence_variables.each do |variable|
+      it { should validate_presence_of(variable) }
+    end
   end
   
 end
