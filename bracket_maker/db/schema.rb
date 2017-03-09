@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170309034604) do
 
   # These are extensions that must be enabled in order to support this database
@@ -50,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170309034604) do
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name",                       null: false
-    t.string   "event",                      null: false
+    t.string   "event_type",                 null: false
     t.integer  "admin_id",                   null: false
     t.boolean  "completed",  default: false
     t.datetime "created_at",                 null: false
