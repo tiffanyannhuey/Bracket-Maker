@@ -1,24 +1,48 @@
 require 'rails_helper'
 
-# describe Tournament do 
-#   let(:tournament) { Tournament.new }
+RSpec.describe Tournament, :type => :model do 
+  let(:tournament) { Tournament.new(
+    name: "Vavi Volleyball Intermediate",
+    event: "Volleyball",
+    admin_id: 1) }
 
-#   describe ".recent" do
-#     it "returns an ActiveRecord::Relation object" do
-#       expect(Tournament.recent).to be_a(ActiveRecord::Relation)
-#     end
-#   end
+  describe ".recent" do
+    it "returns an ActiveRecord::Relation object" do
+      expect(Tournament.recent).to be_a(ActiveRecord::Relation)
+    end
+  end
 
-#   describe "#winner" do
-#     it "returns a Team object if the tournament is over" do
-#       tournament.completed = true
-#       expect(tournament.winner).to be_a(Team)
-#     end
+  describe "#winner" do
+    pending "returns a Team object if the tournament is over" do
+      tournament.completed = true
+      expect(tournament.winner).to be_a(Team)
+    end
 
-#     it "returns a string notifying the user that the tournament isn't over" do
-#       tournament.completed = false
-#       expect(tournament.winner).to eq("Winner is not yet determined.")
-#     end
-#   end
+    pending "returns a string notifying the user that the tournament isn't over" do
+      tournament.completed = false
+      expect(tournament.winner).to eq("Winner is not yet determined.")
+    end
+  end
+
+  describe "validations" do
+    presence_variables = [:name, :event, :admin_id]
+
+    presence_variables.each do |variable|
+      it { should validate_presence_of(variable) }
+    end
+
+    it { should belong_to(:admin).class_name("User") }
+
+    it { should have_many(:games) }
+
+    # it { should have_many(:rounds) } # failing b/c no tournament_id in rounds
+
+    tournament_columns = [:id, :name, :event, :admin_id, :completed, :created_at, :updated_at]
+    
+    tournament_columns.each do |column|
+      it { should have_db_column(column) }
+    end
+
+  end
   
-# end
+end

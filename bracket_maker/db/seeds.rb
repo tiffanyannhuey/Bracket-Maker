@@ -9,3 +9,4 @@ Tournament.create!(name: "All Star Basketball Tournament", event_type: "Basketba
 Tournament.create!(name: "Vavi Volleyball Tournament", event_type: "Volleyball", admin_id: users[1].id)
 Tournament.create!(name: "Cornhole Championship", event_type: "Cornhole", admin_id: users[2].id)
 
+
