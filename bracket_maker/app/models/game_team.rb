@@ -3,5 +3,5 @@ class GameTeam < ApplicationRecord
   belongs_to :team
   has_one :tournament, through: :game
 
-  validates_associated :game, :team
+  # validates_associated :game, :team
 end
