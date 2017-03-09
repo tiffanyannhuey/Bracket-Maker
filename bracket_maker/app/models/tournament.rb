@@ -13,7 +13,7 @@ class Tournament < ApplicationRecord
 
   scope :recent, -> { order("created_at DESC").limit(6) }
 
-  private
+  # private
 
   def round_assign(n)
       rounds = {}
@@ -28,7 +28,7 @@ class Tournament < ApplicationRecord
 
   def rounds_games(roster)
     roster.each do |round, game|
-    bren.tournaments.last.rounds.create(number: round).games.push(game.times.with_object([]) {|position, collection| collection << Game.new(position: position + 1)})
+    self.rounds.create(number: round).games.push(game.times.with_object([]) {|position, collection| collection << Game.new(position: position + 1)})
     end
   end
 
