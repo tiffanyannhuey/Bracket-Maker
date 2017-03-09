@@ -24,7 +24,7 @@ RSpec.describe Tournament, :type => :model do
     end
   end
 
-  context "validations" do
+  describe "validations" do
     presence_variables = [:name, :event, :admin_id]
 
     presence_variables.each do |variable|
@@ -36,6 +36,13 @@ RSpec.describe Tournament, :type => :model do
     it { should have_many(:games) }
 
     # it { should have_many(:rounds) } # failing b/c no tournament_id in rounds
+
+    tournament_columns = [:id, :name, :event, :admin_id, :completed, :created_at, :updated_at]
+    
+    tournament_columns.each do |column|
+      it { should have_db_column(column) }
+    end
+
   end
   
 end
