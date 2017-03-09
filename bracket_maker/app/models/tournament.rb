@@ -1,9 +1,8 @@
 class Tournament < ApplicationRecord
   has_many :rounds
+  has_many :teams
   has_many :games, through: :rounds
-  has_many :teams, through: :games
   belongs_to :admin, class_name: "User"
-
 
   validates :name, :event_type, :admin_id, presence: true
 
