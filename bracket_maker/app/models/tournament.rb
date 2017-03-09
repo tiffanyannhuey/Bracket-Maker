@@ -2,6 +2,7 @@ class Tournament < ApplicationRecord
   has_many :rounds
   has_many :teams
   has_many :games, through: :rounds
+  has_many :game_teams, through: :games
   belongs_to :admin, class_name: "User"
 
   after_create :rounds_games
