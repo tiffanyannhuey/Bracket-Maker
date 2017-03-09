@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170309034604) do
   create_table "game_teams", force: :cascade do |t|
     t.integer  "game_id"
     t.integer  "team_id"
-    t.boolean  "won"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "won",        default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["game_id"], name: "index_game_teams_on_game_id", using: :btree
     t.index ["team_id"], name: "index_game_teams_on_team_id", using: :btree
   end
