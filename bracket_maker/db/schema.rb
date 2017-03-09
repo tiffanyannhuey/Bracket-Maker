@@ -27,24 +27,25 @@ ActiveRecord::Schema.define(version: 20170309034604) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer  "round_id"
+    t.integer  "round_id",   null: false
+    t.integer  "position",   null: false
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "position"
   end
 
   create_table "rounds", force: :cascade do |t|
-    t.integer  "game_id",    null: false
-    t.integer  "number",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "tournament_id", null: false
+    t.integer  "number",        null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",          null: false
+    t.integer  "tournament_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "tournaments", force: :cascade do |t|
