@@ -4,13 +4,12 @@ class Tournament < ApplicationRecord
   has_many :teams, through: :games
   belongs_to :admin, class_name: "User"
 
-  validates :name, :event, :admin_id, presence: true
+
+  validates :name, :event_type, :admin_id, presence: true
 
   validates :completed, inclusion: { in: [true, false] }
-  
-  validates_associated :rounds, :games, :teams
 
-  validates :admin, absence: true
+  validates_associated :rounds, :games, :teams
 
   scope :recent, -> { order("created_at DESC").limit(6) }
 
