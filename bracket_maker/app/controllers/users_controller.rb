@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
   end
-q
+
   private
 
   def user_params
