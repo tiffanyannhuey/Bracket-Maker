@@ -30,6 +30,12 @@ RSpec.describe Tournament, :type => :model do
     presence_variables.each do |variable|
       it { should validate_presence_of(variable) }
     end
+
+    it { should belong_to(:admin).class_name("User") }
+
+    it { should have_many(:games) }
+
+    # it { should have_many(:rounds) } # failing b/c no tournament_id in rounds
   end
   
 end
