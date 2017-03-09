@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170308233401) do
+ActiveRecord::Schema.define(version: 20170309034604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "game_teams", force: :cascade do |t|
     t.integer  "game_id"
@@ -32,6 +30,14 @@ ActiveRecord::Schema.define(version: 20170308233401) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "position"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "number",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
@@ -40,7 +46,23 @@ ActiveRecord::Schema.define(version: 20170308233401) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tournaments", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.string   "event_type",                 null: false
+    t.integer  "admin_id",                   null: false
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   add_foreign_key "game_teams", "games"
   add_foreign_key "game_teams", "teams"
-
 end
