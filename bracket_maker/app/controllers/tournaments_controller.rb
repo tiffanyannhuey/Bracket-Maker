@@ -1,10 +1,14 @@
 class TournamentsController < ApplicationController
+
+  def index # homepage
+    @tournaments = Tournament.recent
+  end
+
   def new
     @tournament = Tournament.new
   end
 
   def create
-    # render plain: params.inspect
     @tournament = Tournament.new(tournament_params)
     if @tournament.save
       redirect_to new_user_tournament_team
@@ -12,6 +16,7 @@ class TournamentsController < ApplicationController
       render new_user_tournament_path
     end
   end
+
 
 private
 

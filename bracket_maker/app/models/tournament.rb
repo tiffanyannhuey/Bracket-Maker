@@ -9,11 +9,17 @@ class Tournament < ApplicationRecord
 
   validates :name, :event_type, :admin_id, :number_of_teams, presence: true
 
-  validates :completed, inclusion: { in: [true, false] }
-
-  validates_associated :rounds, :games, :teams
+  validates_associated :rounds, :teams,  :games
 
   scope :recent, -> { order("created_at DESC").limit(6) }
+
+  def winner
+    if self.completed
+      "hi"
+    else
+      "Winner is not yet determined."
+    end
+  end
 
   attr_accessor :number_of_teams
 
@@ -37,4 +43,3 @@ class Tournament < ApplicationRecord
   end
 
 end
-

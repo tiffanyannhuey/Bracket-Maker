@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Tournament, :type => :model do 
-  let(:tournament) { Tournament.new(
+  let(:tournament) { Tournament.create(
     name: "Vavi Volleyball Intermediate",
-    event: "Volleyball",
-    admin_id: 1) }
+    event_type: "Volleyball",
+    admin_id: 1,
+    teams: 6) }
 
   describe ".recent" do
     it "returns an ActiveRecord::Relation object" do
@@ -18,14 +19,14 @@ RSpec.describe Tournament, :type => :model do
       expect(tournament.winner).to be_a(Team)
     end
 
-    pending "returns a string notifying the user that the tournament isn't over" do
+    it "returns a string notifying the user that the tournament isn't over" do
       tournament.completed = false
       expect(tournament.winner).to eq("Winner is not yet determined.")
     end
   end
 
   describe "validations" do
-    presence_variables = [:name, :event, :admin_id]
+    presence_variables = [:name, :event_type, :admin_id]
 
     presence_variables.each do |variable|
       it { should validate_presence_of(variable) }
@@ -35,9 +36,9 @@ RSpec.describe Tournament, :type => :model do
 
     it { should have_many(:games) }
 
-    # it { should have_many(:rounds) } # failing b/c no tournament_id in rounds
+    it { should have_many(:teams) }
 
-    tournament_columns = [:id, :name, :event, :admin_id, :completed, :created_at, :updated_at]
+    tournament_columns = [:id, :name, :event_type, :admin_id, :completed, :created_at, :updated_at]
     
     tournament_columns.each do |column|
       it { should have_db_column(column) }

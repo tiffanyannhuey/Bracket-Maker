@@ -23,7 +23,6 @@ RSpec.describe User, type: :model do
       it { should have_db_column(column)}
     end
 
-  end
 end
 
 
