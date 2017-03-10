@@ -1,1 +1,13 @@
-<h1>Hello</h1>
+<h1>:))))</h1>
+
+<%= form_for @games.first.tournament do |t| %>
+  <% @games.each do |game|  %>
+  <%= t.fields_for game do |g| %>
+    <p>
+      <%= g.label :name %>
+      <%= g.text_field :name %>
+    </p>
+  <% end %>
+  <% end %>
+  <%= t.submit %>
+<% end %>
