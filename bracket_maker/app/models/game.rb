@@ -6,4 +6,9 @@ class Game < ApplicationRecord
   has_many :teams, through: :game_teams
 
   validates :position, presence: true
+
+  def winner
+    self.game_teams.find{|gt| gt.won }.team
+    # self.game_teams.find_by(won: true).team
+  end
 end
