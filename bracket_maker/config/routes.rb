@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  root 'tournaments#index'
+
   resources :users do
     resources :tournaments do
       resources :teams
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :rounds
 
-  # resources :tournaments, only:[:index, :show]
+  resources :tournaments, only:[:index, :show] # someone review this
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
