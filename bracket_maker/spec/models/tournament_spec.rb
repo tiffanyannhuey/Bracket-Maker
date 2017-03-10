@@ -13,17 +13,17 @@ RSpec.describe Tournament, :type => :model do
     end
   end
 
-  # describe "#winner" do
-    # pending "returns a Team object if the tournament is over" do
-    #   tournament.completed = true
-    #   expect(tournament.winner).to be_a(Team)
-    # end
+  describe "#winner" do
+    pending "returns a Team object if the tournament is over" do
+      tournament.completed = true
+      expect(tournament.winner).to be_a(Team)
+    end
 
-  #   it "returns a string notifying the user that the tournament isn't over" do
-  #     tournament.completed = false
-  #     expect(tournament.winner).to eq("Winner is not yet determined.")
-  #   end
-  # end
+    it "returns a string notifying the user that the tournament isn't over" do
+      tournament.completed = false
+      expect(tournament.winner).to eq("Winner is not yet determined.")
+    end
+  end
 
   describe "validations" do
     presence_variables = [:name, :event_type, :admin_id]
