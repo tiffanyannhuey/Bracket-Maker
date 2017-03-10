@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :tournaments, except: [:index, :new, :create] do
     resources :teams
+    resources :game_teams
   end
+
+  resources :rounds
 
   # resources :tournaments, only:[:index, :show]
 
