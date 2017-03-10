@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
 
-  def index # homepage
+  def index
     @tournaments = Tournament.recent
   end
 

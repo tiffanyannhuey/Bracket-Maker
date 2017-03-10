@@ -1,4 +1,4 @@
-<h1><%= @tournament.name %></h1>
+<div id="container"><h1><%= @tournament.name %></h1>
 <main id="tournament">
   <% @tournament.rounds.each do |round| %>
   <ul class="round round-<%= round.number %>">
@@ -14,6 +14,5 @@
       <li class="spacer">&nbsp;</li>
     </ul>
   <% end %>
-
-
 </main>
+</div>

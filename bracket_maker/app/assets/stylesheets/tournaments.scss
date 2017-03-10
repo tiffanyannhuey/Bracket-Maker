@@ -2,3 +2,14 @@
   display: inline-block;
   list-style-type: none;
 }
+
+body { 
+  background-color: yellow;
+}
+
+div#container {
+  background-color: white;
+  margin: 0 auto;
+  width: 900px;
+  padding: 50px;
+};
