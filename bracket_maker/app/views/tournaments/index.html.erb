@@ -1,14 +1,19 @@
-<div id="container"><h1>Bracket Maker</h1>
+<h1>Bracket Maker</h1>
 <p>
 <h3>Create Your Own Bracket</h3>
-<%= link_to("Sign Up Today!", signup_path) %><p>
+<%= link_to("Sign Up Today!", signup_path) %>
 
-<% @tournaments.each do |tournament| %>
+
+
+<p><p>
+<h1>Recent Tournaments</h1>
+
+<% @tournaments_recent.each do |tournament| %>
   <div class="tournament-recent">
   <ul>
-    <li class="tournament-recent"> <%= tournament.name %> </li><br>
-    <li class="tournament-recent"> Event: <%= tournament.event_type %> </li><br>
-    <li class="tournament-recent"><%= link_to("View", tournament_path(tournament)) %></li>
+    <li class="tournament-recent-list"> <%= tournament.name %> </li><br>
+    <li class="tournament-recent-list"> Event: <%= tournament.event_type %> </li><br>
+    <li class="tournament-recent-list"><%= link_to("View", tournament_path(tournament)) %></li>
   </ul>
+  </div>
 <% end %>
-</div>

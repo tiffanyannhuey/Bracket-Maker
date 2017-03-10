@@ -1,7 +1,8 @@
 class TournamentsController < ApplicationController
 
   def index
-    @tournaments = Tournament.recent
+    @tournaments_recent = Tournament.recent
+    @tournaments_all = Tournament.all
   end
 
   def new
