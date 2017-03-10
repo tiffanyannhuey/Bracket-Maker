@@ -8,9 +8,11 @@
   height: 150px;
 }
 
-.tournament-recent-list {
+ul.tournaments{
   list-style-type: none;
   text-align: center;
+  justify-content: center;
+
 }
 
 div#container {
@@ -34,4 +36,8 @@ div#container {
 .fixed-nav-bar li {
   display: inline-block;
   padding-right: 10px;
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
 }
