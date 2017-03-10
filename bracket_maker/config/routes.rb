@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tournaments, only:[:index, :show]
+  resources :tournaments, except: [:index, :new, :create] do
+    resources :teams
+  end
+
+  # resources :tournaments, only:[:index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
