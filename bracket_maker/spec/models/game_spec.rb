@@ -1,13 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
+  let(:user) { User.create(username: 'joe', email: 'joe@joe.co', password: 'hello') }
+  let(:tournament) { Tournament.create(name: "test", event_type: "test", admin: user, number_of_teams: 16) }
+  let(:first_round) { tournament.rounds.first }
+  let(:game) { first_round.games.first }
+  let(:team_one) { Team.create(name: 'test1') }
+  let(:team_two) { Team.create(name: 'test2') }
+  let(:completed_game) do
+    game.teams << [team_one, team_two]
+    game.game_teams.first.update(won: true)
+    #game.teams.first.winner!
+    return game
+  end
+
   describe "attributes" do
     it "has a position within a round" do
-      round_1 = Round.create(tournament_id: 1, number: 1)
-      round_1.games.push(3.times.with_object([]) {|position, collection| collection << Game.create(position: position + 1)})
-      expect(round_1.games.first.position).to eq 1
-      expect(round_1.games.second.position).to eq 2
-      expect(round_1.games.third.position).to eq 3
+      expect(first_round.games.first.position).to eq 1
+      expect(first_round.games.second.position).to eq 2
+      expect(first_round.games.third.position).to eq 3
+    end
+    it "has a winner" do
+      expect(completed_game.winner).to be team_one
     end
   end
 
