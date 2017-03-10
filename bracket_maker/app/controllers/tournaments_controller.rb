@@ -8,6 +8,11 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new
   end
 
+  def show
+    # render plain: params.inspect
+    @tournament = Round.find(params[:id] ).tournament
+  end
+
   def create
 
     @tournament = Tournament.new(tournament_params)
