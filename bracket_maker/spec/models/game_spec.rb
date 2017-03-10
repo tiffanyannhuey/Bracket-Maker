@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Game, type: :model do
+
   let(:user) { User.create(username: 'joe', email: 'joe@joe.co', password: 'hello') }
   let(:tournament) { Tournament.create(name: "test", event_type: "test", admin: user, number_of_teams: 16) }
   let(:first_round) { tournament.rounds.first }
@@ -24,6 +25,7 @@ RSpec.describe Game, type: :model do
       expect(completed_game.winner).to be team_one
     end
   end
+
 
   describe "associations" do
     it { should have_many(:game_teams) }
