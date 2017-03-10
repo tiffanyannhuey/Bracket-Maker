@@ -16,9 +16,10 @@ class GameTeam < ApplicationRecord
   end
 
   def advance_player
-    if self.game.winner == self.team
+    if (self.game.winner == self.team) && (self.round.number != self.tournament.rounds.maximum(:number))
       GameTeam.create(game: self.tournament.rounds[self.round.number].games.find_by(position: self.next_round_position), team: self.team)
+    else (self.game.winner == self.team) && (self.round.number == self.tournament.rounds.maximum(:number))
+      self.tournament.completed!
     end
   end
-  # validates_associated :game, :team
 end
