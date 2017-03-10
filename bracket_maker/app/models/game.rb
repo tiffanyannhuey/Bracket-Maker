@@ -5,6 +5,8 @@ class Game < ApplicationRecord
   has_one :admin, through: :round
   has_many :teams, through: :game_teams
 
+
+
   validates :position, presence: true
 
   def winner

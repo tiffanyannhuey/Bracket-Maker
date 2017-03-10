@@ -15,8 +15,8 @@
       <li class="tournament-recent-list"><%= tournament.name %></li>
       <li class="tournament-recent-list"><%= tournament.event_type %></li>
       <li class="tournament-recent-list"><%= link_to("View", tournament_path(tournament)) %></li>
-     <!--  <li class="tournament-recent-list"><%#= link_to "Delete", user_tournament_path(current_user), method: :delete %></li>
-    </ul> -->
+      <li class="tournament-recent-list"><%= link_to "Delete", user_tournament_path(current_user, tournament.id), method: :delete %></li>
+    </ul>
   </div>
   <% end %>
 
