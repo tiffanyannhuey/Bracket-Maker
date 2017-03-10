@@ -1,6 +1,14 @@
 class RoundsController < ApplicationController
   def update
-    render plain: params.inspect
+    # render plain: round_params.inspect
+    update_round(round_params)
+    redirect_to tournament_path
+  end
+
+  private
+
+  def round_params
+    params.require(:round).permit!
   end
 
 end

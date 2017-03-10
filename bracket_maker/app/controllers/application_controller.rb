@@ -17,4 +17,14 @@ class ApplicationController < ActionController::Base
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def update_round(params)
+    params['game_attributes'].each do |key, attributes|
+      attributes.each do |game, teams|
+        teams.each do |id, name|
+          Team.find(id).update(name: name['name'])
+        end
+      end
+    end
+  end
 end
