@@ -19,3 +19,12 @@
       <li class="spacer">&nbsp;</li>
     <% end %>
   </ul>
+
+  -------->
+
+        <%= form_for tournament_game_teams_path(@tournament) do |f| %>
+      <li><%= f.check_box :won %></li>
+      <li><%= f.hidden_field :game_id %></li>
+      <li><%= f.hidden_field :team_id %></li>
+      <% end %>
+
