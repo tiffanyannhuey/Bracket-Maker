@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   validates :position, presence: true
 
   def winner
-    self.game_teams.find{|gt| gt.won }.team
-    # self.game_teams.find_by(won: true).team
+    winners = self.game_teams.find{|gt| gt.won }
+    return winners.team unless winners.nil?
   end
 end
