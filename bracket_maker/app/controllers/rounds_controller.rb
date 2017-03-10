@@ -2,7 +2,7 @@ class RoundsController < ApplicationController
   def update
     # render plain: round_params.inspect
     update_round(round_params)
-    redirect_to '/'
+    redirect_to tournament_path
   end
 
   private
