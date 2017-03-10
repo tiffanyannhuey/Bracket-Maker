@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Tournament, :type => :model do 
-  let(:tournament) { Tournament.new(
+  let(:tournament) { Tournament.create(
     name: "Vavi Volleyball Intermediate",
     event_type: "Volleyball",
-    admin_id: 1) }
+    admin_id: 1,
+    teams: 6) }
 
   describe ".recent" do
     it "returns an ActiveRecord::Relation object" do
@@ -34,6 +35,8 @@ RSpec.describe Tournament, :type => :model do
     it { should belong_to(:admin).class_name("User") }
 
     it { should have_many(:games) }
+
+    it { should have_many(:teams) }
 
     tournament_columns = [:id, :name, :event_type, :admin_id, :completed, :created_at, :updated_at]
     

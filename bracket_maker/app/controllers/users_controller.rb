@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to 'show'
+      redirect_to user_path(@user)
     else
       render 'new'
     end

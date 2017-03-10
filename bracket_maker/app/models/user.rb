@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :tournaments, foreign_key: :admin_id
+  has_many :games, through: :tournaments
 
   validates :username, :email, presence: true
   validates :email, uniqueness: true
