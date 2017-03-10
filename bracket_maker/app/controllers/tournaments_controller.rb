@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
 
-  def index
+  def index # homepage
     @tournaments = Tournament.recent
   end
 
@@ -16,6 +16,7 @@ class TournamentsController < ApplicationController
       render new_user_tournament_path
     end
   end
+
 
 private
 
