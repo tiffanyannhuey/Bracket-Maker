@@ -5,10 +5,16 @@
     <li class="spacer">&nbsp;</li>
     <% round.games.each do |game| %>
       <li class="game game-top winner"><%= game.teams.first.try(:name)  %></li>
-        <li><%= button_to :won, { action: "update" } %></li>
+        <% team = game.teams.first %>
+        <% if game.present? && (game.teams.count == 2) %>
+          <li><%= button_to :won, tournament_game_team_path(@tournament,GameTeam.find_by(game: game, team: team)), method: :put %></li>
+        <% end %>
         <li class="game game-spacer">&nbsp;</li>
       <li class="game game-bottom "><%= game.teams.second.try(:name)  %></li>
-        <li><%= button_to :won, { action: "update" } %></li>
+        <% second_team = game.teams.first %>
+        <% if game.present? && (game.teams.count == 2) %>
+          <li><%= button_to :won, tournament_game_team_path(@tournament,GameTeam.find_by(game: game, team: second_team)), method: :put %></li>
+        <% end %>
         <li class="game game-spacer">&nbsp;</li>
      <% end %>
       <li class="spacer">&nbsp;</li>
