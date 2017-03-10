@@ -7,7 +7,4 @@ class Round < ApplicationRecord
 
   validates :number, presence: true
 
-  validates_associated :games, :teams, :tournament
-
-  validates_presence_of :admin
 end

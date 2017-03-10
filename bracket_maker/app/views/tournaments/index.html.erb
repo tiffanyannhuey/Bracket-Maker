@@ -24,6 +24,11 @@
     <li> <%= tournament.name %> </li><br>
     <li> Event: <%= tournament.event_type %> </li><br>
     <li><%= link_to("View", tournament_path(tournament)) %></li>
+    <% if tournament.completed %>
+    <li>Winner: <%= tournament.winner.name %></li>
+    <% else %>
+    <li>Winner: TBD</li>
+    <% end %>
   </ul>
   </div>
 <% end %>

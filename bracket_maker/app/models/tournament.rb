@@ -11,7 +11,7 @@ class Tournament < ApplicationRecord
 
   validates :name, :event_type, :admin_id, :number_of_teams, presence: true
 
-  validates_associated :teams,  :games
+  # validates_associated :teams,  :games
 
   scope :recent, -> { order("created_at DESC").limit(6) }
 
