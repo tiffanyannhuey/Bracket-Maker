@@ -1,7 +1,17 @@
 <h1>Bracket Maker</h1>
 <p>
 <h3>Create Your Own Bracket</h3>
-<h4><%= link_to("Sign Up Today!", signup_path) %></h4>
+
+<nav>
+  <ul>
+   <% if logged_in? %>
+    <li><%= link_to("Check Out My Tournaments", user_path(current_user)) %></li>
+   <% else %>
+    <li><%= link_to("Sign Up Today!", signup_path) %></li>
+   <% end %>
+  </ul>
+</nav>
+
 
 
 

@@ -11,11 +11,10 @@ class TournamentsController < ApplicationController
 
   def show
     # render plain: params.inspect
-    @tournament = Round.find(params[:id] ).tournament
+    @tournament = Tournament.find(params[:id])
   end
 
   def create
-
     @tournament = Tournament.new(tournament_params)
     @tournament.admin_id = params[:user_id]
     if @tournament.save
