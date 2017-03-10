@@ -30,13 +30,19 @@ class TournamentsController < ApplicationController
     render plain: params.inspect
   end
 
+  def destroy
+    # render plain: params.inspect
+    tournament = Tournament.find_by(admin_id: params[:user_id], id: params[:id] ).destroy
+    redirect_to user_path(params[:user_id])
+  end
+
 
   private
 
   def tournament_params
 
     params.require(:tournament).permit(:name, :event_type, :number_of_teams)
-    
+
   end
 
 end

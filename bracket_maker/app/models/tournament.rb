@@ -1,5 +1,5 @@
 class Tournament < ApplicationRecord
-  has_many :rounds
+  has_many :rounds, dependent: :destroy
   has_many :teams, through: :games
   has_many :games, through: :rounds
   has_many :game_teams, through: :games
@@ -8,6 +8,7 @@ class Tournament < ApplicationRecord
   accepts_nested_attributes_for :games
 
   after_create :round_assign
+  before_destroy :delete_games, :delete_teams, :delete_game_teams
 
   validates :name, :event_type, :admin_id, :number_of_teams, presence: true
 
@@ -66,6 +67,20 @@ class Tournament < ApplicationRecord
     end
     rounds.create(number: round_number).games << new_games
   end
+
+  def delete_games
+    self.games.destroy_all
+  end
+
+  def delete_teams
+    self.teams.destroy_all
+  end
+
+  def delete_game_teams
+    self.game_teams.destroy_all
+  end
+
+
 
   # def round_assign(n)
   #     rounds = {}
