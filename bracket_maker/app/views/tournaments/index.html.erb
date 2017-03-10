@@ -6,8 +6,8 @@
 <% @tournaments.each do |tournament| %>
   <div class="tournament-recent">
   <ul>
-  <li class="tournament-recent"> <%= tournament.name %> </li>
-  <li class="tournament-recent"> <%= tournament.event_type %> </li>
-  <li class="tournament-recent"><a href="SOMEWHERE">View</a></li>
+    <li class="tournament-recent"> <%= tournament.name %> </li><br>
+    <li class="tournament-recent"> Event: <%= tournament.event_type %> </li><br>
+    <li class="tournament-recent"><a href="SOMEWHERE">View</a></li>
   </ul>
 <% end %>
