@@ -19,7 +19,7 @@ RSpec.describe Tournament, :type => :model do
       expect(tournament.winner).to be_a(Team)
     end
 
-    pending "returns a string notifying the user that the tournament isn't over" do
+    it "returns a string notifying the user that the tournament isn't over" do
       tournament.completed = false
       expect(tournament.winner).to eq("Winner is not yet determined.")
     end

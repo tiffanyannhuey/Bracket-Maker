@@ -14,7 +14,11 @@ class Tournament < ApplicationRecord
   scope :recent, -> { order("created_at DESC").limit(6) }
 
   def winner
-    # leverage bren's game.winner method here
+    if self.completed
+      "hi"
+    else
+      "Winner is not yet determined."
+    end
   end
 
   def teams=(number_of_teams)
