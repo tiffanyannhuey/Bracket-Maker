@@ -50,8 +50,7 @@ class Tournament < ApplicationRecord
 
   def create_games_with_teams_for(round_number)
 
-
-    new_games = (number_of_teams.to_i).times.with_object([]) do |position, collection|
+    new_games = (number_of_teams.to_i/2).times.with_object([]) do |position, collection|
       game = Game.create(position: position + 1)
       # teams = [Team.create(name: ''), Team.create(name: '')]
       game.teams << [Team.create(name: ''), Team.create(name: '')]
