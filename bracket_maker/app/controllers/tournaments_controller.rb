@@ -9,11 +9,14 @@ class TournamentsController < ApplicationController
   end
 
   def create
+
     @tournament = Tournament.new(tournament_params)
+    @tournament.admin_id = params[:user_id]
     if @tournament.save
-      redirect_to new_user_tournament_team
+
+      redirect_to new_user_tournament_team(@tournament)
     else
-      render new_user_tournament_path
+      render :new
     end
   end
 
@@ -21,7 +24,7 @@ class TournamentsController < ApplicationController
 private
 
   def tournament_params
-    params.require(:tournament).permit(:name, :event_type, :teams)
+    params.require(:tournament).permit(:name, :event_type, :number_of_teams)
   end
 
 end
