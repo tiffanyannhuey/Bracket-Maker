@@ -1,4 +1,3 @@
-
 5.times { User.create!(
     username: Faker::Internet.user_name(Faker::HarryPotter.character),
     email: Faker::Internet.free_email,
