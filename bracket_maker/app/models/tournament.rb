@@ -9,7 +9,7 @@ class Tournament < ApplicationRecord
 
   validates :name, :event_type, :admin_id, :number_of_teams, presence: true
 
-  validates_associated :rounds, :teams,  :games
+  validates_associated :teams,  :games
 
   scope :recent, -> { order("created_at DESC").limit(6) }
 
@@ -37,8 +37,8 @@ class Tournament < ApplicationRecord
   end
 
   def rounds_games
-    round_assign(number_of_teams).each do |round, game|
-    self.rounds.create(number: round).games.push(game.times.with_object([]) {|position, collection| collection << Game.new(position: position + 1)})
+    round_assign(number_of_teams.to_i).each do |round, game|
+      self.rounds.create(number: round).games.push(game.times.with_object([]) {|position, collection| collection << Game.new(position: position + 1)})
     end
   end
 

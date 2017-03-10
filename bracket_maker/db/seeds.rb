@@ -11,6 +11,6 @@
 # Tournament.create!(name: "Bocce Ball Bash", event_type: "Bocce Ball", admin_id: users[3].id)
 # Tournament.create!(name: "DDR Legends", event_type: "DDR", admin_id: users[4].id)
 
-User.first.tournaments.create!(name: "All Star Basketball Tournament", event_type: "Basketball", teams: 6)
-User.second.tournaments.create!(name: "Vavi Volleyball tournaments", event_type: "Volleyball", teams: 15)
-User.last.tournaments.create!(name: "Cornhole Championship", event_type: "Cornhole", teams: 18)
+User.first.tournaments.create!(name: "All Star Basketball Tournament", event_type: "Basketball", number_of_teams: 6)
+User.second.tournaments.create!(name: "Vavi Volleyball tournaments", event_type: "Volleyball", number_of_teams: 15)
+User.last.tournaments.create!(name: "Cornhole Championship", event_type: "Cornhole", number_of_teams: 18)
