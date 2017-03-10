@@ -1,1 +1,15 @@
-<h1>Hello</h1>
+<h1>:))))</h1>
+
+<% @games.each do |game| %>
+<% @team = Team.new %>
+  <%= simple_form_for [current_user, game.tournament, @team] do |f| %>
+    <%= f.input :name %>
+    <%= f.association :games, as: :hidden, input_html: { value: game.id } %>
+    <%= f.button :submit %>
+
+  <% end %>
+<% end %>
+
+<% simple_form_for [current_user, @games.first.tournament] do |f| %>
+  <%= f.association :teams %>
+<% end %>
