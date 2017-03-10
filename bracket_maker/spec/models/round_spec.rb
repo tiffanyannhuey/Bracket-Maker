@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Round, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "validations" do
+    it { should validate_presence_of(:number) }
+
+    it { should have_many(:games) }
+
+    it { should have_many(:teams) }
+  end
 end
 
