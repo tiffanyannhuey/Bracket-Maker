@@ -1,5 +1,11 @@
 <div id="container"><h1>Create a Tournament</h1>
 
+<nav>
+  <ul>
+    <li><%= link_to("Back", :back) %></li>
+  </ul>
+</nav>
+
 <%= form_for @tournament, url: user_tournaments_path do |f|  %>
 
 <p>
