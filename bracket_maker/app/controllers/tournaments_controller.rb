@@ -1,7 +1,8 @@
 class TournamentsController < ApplicationController
 
-  def index # homepage
-    @tournaments = Tournament.recent
+  def index
+    @tournaments_recent = Tournament.recent
+    @tournaments_all = Tournament.all
   end
 
   def new
@@ -33,7 +34,9 @@ class TournamentsController < ApplicationController
   private
 
   def tournament_params
+
     params.require(:tournament).permit(:name, :event_type, :number_of_teams)
+    
   end
 
 end

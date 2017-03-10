@@ -1,1 +1,19 @@
-index.html.erb
+<h1>Bracket Maker</h1>
+<p>
+<h3>Create Your Own Bracket</h3>
+<%= link_to("Sign Up Today!", signup_path) %>
+
+
+
+<p><p>
+<h1>Recent Tournaments</h1>
+
+<% @tournaments_recent.each do |tournament| %>
+  <div class="tournament-recent">
+  <ul>
+    <li class="tournament-recent-list"> <%= tournament.name %> </li><br>
+    <li class="tournament-recent-list"> Event: <%= tournament.event_type %> </li><br>
+    <li class="tournament-recent-list"><%= link_to("View", tournament_path(tournament)) %></li>
+  </ul>
+  </div>
+<% end %>
