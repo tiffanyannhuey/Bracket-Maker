@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in @user
       redirect_to "/users/#{@user.id}"
     else
-      render 'new'
+      render 'new', status: 401
     end
   end
 

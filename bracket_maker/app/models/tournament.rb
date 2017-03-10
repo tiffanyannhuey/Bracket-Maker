@@ -7,7 +7,7 @@ class Tournament < ApplicationRecord
 
   after_create :rounds_games
 
-  validates :name, :event_type, :admin_id, presence: true
+  validates :name, :event_type, :admin_id, :number_of_teams, presence: true
 
   validates_associated :rounds, :teams,  :games
 
@@ -21,9 +21,7 @@ class Tournament < ApplicationRecord
     end
   end
 
-  def teams=(number_of_teams)
-    @teams = number_of_teams
-  end
+  attr_accessor :number_of_teams
 
   private
 
@@ -39,7 +37,7 @@ class Tournament < ApplicationRecord
   end
 
   def rounds_games
-    round_assign(@teams).each do |round, game|
+    round_assign(number_of_teams).each do |round, game|
     self.rounds.create(number: round).games.push(game.times.with_object([]) {|position, collection| collection << Game.new(position: position + 1)})
     end
   end
