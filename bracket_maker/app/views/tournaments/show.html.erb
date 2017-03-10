@@ -1,4 +1,11 @@
 <h1><%= @tournament.name %></h1>
+
+<nav>
+  <ul>
+    <li><%= link_to("Back", :back) %></li>
+  </ul>
+</nav>
+
 <main id="tournament">
   <% @tournament.rounds.each do |round| %>
   <ul class="round round-<%= round.number %>">
