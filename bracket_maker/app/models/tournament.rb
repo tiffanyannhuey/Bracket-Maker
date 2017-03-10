@@ -40,28 +40,31 @@ class Tournament < ApplicationRecord
       n -= n/2
       round += 1
     end
+    even_out_rounds
+    end
 
+  def even_out_rounds
     teams_left = number_of_teams.to_i
-    rounds.each do |round|
-      create_extra_game_for(round) if teams_left.odd?
-      teams_left -= teams_left / 2
+    self.rounds.each do |round|
+      puts teams_left.odd?
+      puts round.number
+      if teams_left.odd?
+        game = Game.create(position: round.games.maximum(:position) + 1)
+        game.teams << Team.create(name: '')
+        round.games << game
+      end
+    teams_left -= teams_left / 2
     end
   end
 
   def create_games_with_teams_for(round_number)
-
     new_games = (number_of_teams.to_i/2).times.with_object([]) do |position, collection|
       game = Game.create(position: position + 1)
       # teams = [Team.create(name: ''), Team.create(name: '')]
       game.teams << [Team.create(name: ''), Team.create(name: '')]
       collection << game
     end
-
     rounds.create(number: round_number).games << new_games
-  end
-
-  def create_extra_game_for(round)
-    round.games << Game.create(position: round.games.maximum(:position) + 1)
   end
 
   # def round_assign(n)
