@@ -29,7 +29,7 @@ class Tournament < ApplicationRecord
 
   def round_assign
       round = 1
-      n = number_of_teams
+      n = number_of_teams.to_i
     until n == 1
       if round == 1
         create_games_with_teams_for(round)
@@ -41,7 +41,7 @@ class Tournament < ApplicationRecord
       round += 1
     end
 
-    teams_left = number_of_teams
+    teams_left = number_of_teams.to_i
     rounds.each do |round|
       create_extra_game_for(round) if teams_left.odd?
       teams_left -= teams_left / 2
@@ -51,7 +51,7 @@ class Tournament < ApplicationRecord
   def create_games_with_teams_for(round_number)
 
 
-    new_games = (number_of_teams).times.with_object([]) do |position, collection|
+    new_games = (number_of_teams.to_i).times.with_object([]) do |position, collection|
       game = Game.create(position: position + 1)
       # teams = [Team.create(name: ''), Team.create(name: '')]
       game.teams << [Team.create(name: ''), Team.create(name: '')]

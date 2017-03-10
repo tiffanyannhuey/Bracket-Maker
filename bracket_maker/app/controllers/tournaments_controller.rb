@@ -14,11 +14,15 @@ class TournamentsController < ApplicationController
     @tournament.admin_id = params[:user_id]
     if @tournament.save
 
-      redirect_to new_user_tournament_team_path(current_user, @tournament)
+      redirect_to new_tournament_team_path(@tournament)
       # redirect_to "/users/#{params[:user_id]}/tournaments/#{@tournament.id}/teams/new"
     else
       render :new
     end
+  end
+
+  def update
+    render plain: params.inspect
   end
 
 
