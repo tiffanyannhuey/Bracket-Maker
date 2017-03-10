@@ -4,14 +4,13 @@
   margin: 20px;
   padding: 20px;
   text-align: center;
+  width: 300px;
+  height: 150px;
 }
 
 .tournament-recent-list {
   list-style-type: none;
-}
-
-body { 
-  background-color: aliceblue;
+  text-align: center;
 }
 
 div#container {
@@ -34,4 +33,5 @@ div#container {
 
 .fixed-nav-bar li {
   display: inline-block;
+  padding-right: 10px;
 }
