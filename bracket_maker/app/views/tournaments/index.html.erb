@@ -1,13 +1,13 @@
 <h1>Bracket Maker</h1>
 <p>
-<h3>Create Your Own Bracket!</h3>
-<!-- sign up today link here -->
+<h3>Create Your Own Bracket</h3>
+<%= link_to("Sign Up Today!", signup_path) %><p>
 
 <% @tournaments.each do |tournament| %>
   <div class="tournament-recent">
   <ul>
     <li class="tournament-recent"> <%= tournament.name %> </li><br>
     <li class="tournament-recent"> Event: <%= tournament.event_type %> </li><br>
-    <li class="tournament-recent"><a href="SOMEWHERE">View</a></li>
+    <li class="tournament-recent"><%= link_to("View", tournament_path(tournament)) %></li>
   </ul>
 <% end %>
