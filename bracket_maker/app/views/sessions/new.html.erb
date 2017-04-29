@@ -1,0 +1,21 @@
+<h1>Log In</h1>
+
+<div class="form">
+<%= form_for :session, url: login_path do |f| %>
+<p>
+  <%= f.label :email %><br>
+  <%= f.email_field :email, placeholder: "Email" %>
+</p>
+
+<p>
+  <%= f.label :password %><br>
+  <%= f.password_field :password, placeholder: "Password" %>
+</p>
+
+<p>
+  <%= f.submit "Click to log in" %>
+</p>
+<% end %>
+
+<p>New User? <%= link_to "Sign Up!", signup_path %></p>
+</div>

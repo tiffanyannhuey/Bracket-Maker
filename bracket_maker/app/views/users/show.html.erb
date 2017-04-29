@@ -1,0 +1,24 @@
+
+<h1>User Profile</h1>
+<nav>
+  <ul>
+    <li><%= link_to("Start a New Tournament", new_user_tournament_path(current_user)) %></li>
+    <li><%= link_to("Back", :back) %></li>
+  </ul>
+</nav>
+
+
+<h2>My Tournaments:</h2>
+  <% @tournaments.each do |tournament| %>
+  <div class="tournament-recent">
+    <ul>
+      <li class="tournament-recent-list"><%= tournament.name %></li>
+      <li class="tournament-recent-list"><%= tournament.event_type %></li>
+      <li class="tournament-recent-list"><%= link_to("View", tournament_path(tournament)) %></li>
+      <li class="tournament-recent-list"><%= link_to "Delete", user_tournament_path(current_user, tournament.id), method: :delete %></li>
+    </ul>
+  </div>
+  <% end %>
+
+
+

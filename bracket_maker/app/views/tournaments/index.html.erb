@@ -1,0 +1,34 @@
+<h1>Bracket Maker</h1>
+<p>
+<h3>Create Your Own Bracket</h3>
+
+<nav>
+  <ul>
+   <% if logged_in? %>
+    <li><%= link_to("Check Out My Tournaments", user_path(current_user)) %></li>
+   <% else %>
+    <li><%= link_to("Sign Up Today!", signup_path) %></li>
+   <% end %>
+  </ul>
+</nav>
+
+
+
+
+<p><p>
+<h1>Recent Tournaments</h1>
+
+<% @tournaments_recent.each do |tournament| %>
+  <div class="tournament-recent">
+  <ul class="tournaments">
+    <li> <%= tournament.name %> </li><br>
+    <li> Event: <%= tournament.event_type %> </li><br>
+    <li><%= link_to("View", tournament_path(tournament)) %></li>
+    <% if tournament.completed %>
+    <li>Winner: <%= tournament.winner.try(:name) %></li>
+    <% else %>
+    <li>Winner: TBD</li>
+    <% end %>
+  </ul>
+  </div>
+<% end %>
