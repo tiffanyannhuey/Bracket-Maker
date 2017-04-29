@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem "factory_girl_rails", "~> 4.0"
 gem 'simple_form'
+gem 'bourbon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
