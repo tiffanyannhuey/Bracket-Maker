@@ -1,0 +1,29 @@
+<h1>Create a Tournament</h1>
+
+<nav>
+  <ul>
+    <li><%= link_to("Back", :back) %></li>
+  </ul>
+</nav>
+<div class="form">
+<%= form_for @tournament, url: user_tournaments_path do |f|  %>
+
+<p>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, placeholder: "Name" %>
+</p>
+
+<p>
+  <%= f.label :event_type %><br>
+  <%= f.text_field :event_type, placeholder: "Event Type" %>
+</p>
+
+<p>
+  <%= f.label :number_of_teams %><br>
+  <%= f.number_field :number_of_teams, placeholder: "Number of Teams" %>
+</p>
+
+<p><%= f.submit %></p>
+
+<% end %>
+</div>

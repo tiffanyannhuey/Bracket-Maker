@@ -1,0 +1,20 @@
+<h1>Team Entry</h1>
+
+<div class="form">
+<% team_count = 1 %>
+<%= simple_form_for @round do |r| %>
+  <% @round.games.each do |game| %>
+    <%= r.simple_fields_for "game_attributes[]", game  do |g| %>
+
+      <% game.teams.each do |team| %>
+
+      <%= g.simple_fields_for "team_attributes[]", team  do |t| %>
+        <%= t.input :name, label: false, placeholder: "Team Name #{team_count}" %><br>
+        <% team_count += 1 %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% end %>
+  <%= r.submit %>
+<% end %>
+</div>

@@ -1,0 +1,31 @@
+<h1><%= @tournament.name %></h1>
+
+<nav>
+  <ul>
+    <li><%= link_to("Back", :back) %></li>
+  </ul>
+</nav>
+
+<main id="tournament">
+  <% @tournament.rounds.each do |round| %>
+  <ul class="round round-<%= round.number %>">
+    <li class="spacer">&nbsp;</li>
+    <% round.games.each do |game| %>
+      <li class="game game-top winner"><%= game.teams.first.try(:name)  %></li>
+        <% team = game.teams.first %>
+        <% if (game.present? && (game.teams.count == 2)) && current_user %>
+          <li><%= button_to :won, tournament_game_team_path(@tournament,GameTeam.find_by(game: game, team: team)), method: :put %></li>
+        <% end %>
+        <li class="game game-spacer">&nbsp;</li>
+      <li class="game game-bottom "><%= game.teams.second.try(:name)  %></li>
+        <% second_team = game.teams.second %>
+        <% if (game.present? && (game.teams.count == 2)) && current_user %>
+          <li><%= button_to :won, tournament_game_team_path(@tournament,GameTeam.find_by(game: game, team: second_team)), method: :put %></li>
+        <% end %>
+        <li class="game game-spacer">&nbsp;</li>
+     <% end %>
+      <li class="spacer">&nbsp;</li>
+    </ul>
+  <% end %>
+</main>
+
