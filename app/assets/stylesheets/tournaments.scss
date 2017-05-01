@@ -1,4 +1,4 @@
-* { outline: 1px solid red; }
+// * { outline: 1px solid red; }
 
 .tournament-recent {
   display: inline-block;
@@ -12,12 +12,17 @@
   @include border-right-radius(5px);
   @include border-bottom-radius(5px);
   @include border-left-radius(5px);
-  @include grid-column(4);
+  @include grid-column(3);
   ul.tournaments {
     list-style-type: none;
     text-align: center;
     justify-content: center;
   }
+}
+
+h1 {
+  @include grid-column(12);
+  justify-content: center;
 }
 
 
@@ -31,7 +36,14 @@ div#container {
 
 section {
   padding: 50px;
-  @include grid-column(12);
+  // @include grid-column(12);
+  justify-content: center;
+  nav ul li {
+    list-style-type: none;
+    justify-content: center;
+    text-align: center;
+    padding-right: 4em;
+  }
 }
 
 
