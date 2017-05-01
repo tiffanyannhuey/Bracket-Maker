@@ -21,9 +21,11 @@
   }
 }
 
-h1 {
+.tournament-list {
   @include grid-column(12);
+  padding-top: 4em;
   justify-content: center;
+
 }
 
 
@@ -36,7 +38,11 @@ div#container {
 }
 
 section {
-  padding: 50px;
+  background-color: #4286f4;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  color: white;
+
   h1 {
     font-size: 5em;
   }
