@@ -1,4 +1,4 @@
-
+* { outline: 1px solid red; }
 
 .tournament-recent {
   display: inline-block;
@@ -12,6 +12,7 @@
   @include border-right-radius(5px);
   @include border-bottom-radius(5px);
   @include border-left-radius(5px);
+  @include grid-column(4);
   ul.tournaments {
     list-style-type: none;
     text-align: center;
@@ -21,11 +22,19 @@
 
 
 div#container {
-  background-color: white;
-  margin: 0 auto;
-  width: 900px;
-  padding: 50px;
+  // background-color: white;
+  // margin: 0 auto;
+  // width: 900px;
+  // padding: 50px;
+  @include grid-container;
 }
+
+section {
+  padding: 50px;
+  @include grid-column(12);
+}
+
+
 
 .fixed-nav-bar {
   position: fixed;
